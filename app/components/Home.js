@@ -8,6 +8,7 @@ import {
     ScrollView,
     Button,
     Image,
+    TextInput,
 } from 'react-native';
 
 export default class Home extends Component {
@@ -16,11 +17,15 @@ export default class Home extends Component {
         this.props.getCharacters();
     }
 
+    onSearchTextChanged = (inputText)=>{
+        this.props.getCharacters(inputText);
+    }
+
     render() {
         let characters = ""
         if(this.props.characters){
             characters = this.props.characters.map((item, index)=>{
-                console.log(item);
+                //console.log(item);
                 return (
                     <View style={styles.movieItem}>
                         <Text 
@@ -36,6 +41,7 @@ export default class Home extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>Marvel Characters</Text>
+                <TextInput onChangeText={this.onSearchTextChanged} style={styles.textInput} placeholder="Search"></TextInput>
                 <ScrollView>
                     <View style={styles.movieContainer}>
                         {characters}
@@ -60,6 +66,15 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         flexWrap:"wrap",
     },
+
+    textInput: {
+        width: 300,
+        height: 40,
+        borderWidth: 1,
+        borderColor: 'blue',
+        textAlign: "center",
+        borderRadius: 5,
+      },
 
     header:{
         fontWeight: "bold",

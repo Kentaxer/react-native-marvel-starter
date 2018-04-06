@@ -29,7 +29,7 @@ export default class MarvelService {
       if(name){
         search = `&nameStartsWith=${name}`;
       }
-      
+      console.log(`${this.url}${search}`);
       return this.client.get(`${this.url}${search}`)
     }  
 

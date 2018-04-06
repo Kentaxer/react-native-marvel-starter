@@ -5,7 +5,7 @@ const client = new MarvelService("characters");
 export function getCharacters(name = "") {
     let search = "";
     if (name) {
-        search = `&nameStartsWith=${name}`;
+        search = `${name}`;
     }
 
     return dispatch => {
