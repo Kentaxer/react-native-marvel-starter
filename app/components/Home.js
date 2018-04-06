@@ -14,11 +14,9 @@ import {
 export default class Home extends Component {
 
     componentDidMount(){
-        this.props.getCharacters();
-    }
-
-    onSearchTextChanged = (inputText)=>{
-        this.props.getCharacters(inputText);
+        console.log("HOME MOUNT");
+        console.log(this.props.searchText);       
+        this.props.getCharacters(this.props.searchText);
     }
 
     render() {
@@ -29,9 +27,10 @@ export default class Home extends Component {
                 return (
                     <View style={styles.movieItem}>
                         <Text 
-                        key={index}
+                        key={"TEXT"+index}
                         style={{ width: 150, height: 30 }}>{item.name}</Text>
                         <Image
+                            key={"IMAGE"+index}
                             style={{ width: 150, height: 150 }}
                             source={{ uri: item.thumbnail.path + "." + item.thumbnail.extension }} />
                     </View>
@@ -41,7 +40,6 @@ export default class Home extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>Marvel Characters</Text>
-                <TextInput onChangeText={this.onSearchTextChanged} style={styles.textInput} placeholder="Search"></TextInput>
                 <ScrollView>
                     <View style={styles.movieContainer}>
                         {characters}

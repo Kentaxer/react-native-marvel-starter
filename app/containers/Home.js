@@ -4,7 +4,8 @@ import { getCharacters } from "../actions/marvel";
 
 const mapStateToProps = state => {
   return { 
-    characters: state.marvel.characters
+    characters: state.marvel.characters,
+    searchText: state.marvel.searchText,
   }
 }
 
