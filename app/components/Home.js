@@ -41,8 +41,10 @@ export default class Home extends Component {
             <View style={styles.container}>
                 <Text style={styles.header}>Marvel Characters</Text>
                 <ScrollView>
-                    <View style={styles.movieContainer}>
-                        {characters}
+                    <View style={styles.movieContainer_1}>
+                        <View style={styles.movieContainer}>
+                            {characters}
+                        </View>
                     </View>
                 </ScrollView>
             </View>
@@ -54,6 +56,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
+        justifyContent: 'center',
     },
 
     movieItem:{
@@ -63,6 +66,11 @@ const styles = StyleSheet.create({
     movieContainer:{
         flexDirection:"row",
         flexWrap:"wrap",
+        justifyContent: 'center',
+    },
+
+    movieContainer_1:{
+        justifyContent: 'center',
     },
 
     textInput: {
